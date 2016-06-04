@@ -188,7 +188,7 @@ def onKanjiStats():
     w.stdHtml(rep)
     bb = QDialogButtonBox(QDialogButtonBox.Close)
     l.addWidget(bb)
-    bb.connect(bb, SIGNAL("rejected()"), d, SLOT("reject()"))
+    bb.rejected.connect(d.reject)
     d.setLayout(l)
     d.resize(500, 400)
     restoreGeom(d, "kanjistats")
@@ -200,6 +200,6 @@ def createMenu():
     a = QAction(mw)
     a.setText("Kanji Stats")
     mw.form.menuTools.addAction(a)
-    mw.connect(a, SIGNAL("triggered()"), onKanjiStats)
+    a.triggered.connect(onKanjiStats)
 
 createMenu()

@@ -5,8 +5,8 @@
 # Bulk update of readings.
 #
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 from anki.hooks import addHook
 from japanese.reading import mecab, srcFields, dstFields
 from notetypes import isActiveNoteType
@@ -60,7 +60,7 @@ def regenerateReadings(nids):
 
 def setupMenu(browser):
     a = QAction("Bulk-add Readings", browser)
-    browser.connect(a, SIGNAL("triggered()"), lambda e=browser: onRegenerate(e))
+    a.triggered.connect(lambda e=browser: onRegenerate(e))
     browser.form.menuEdit.addSeparator()
     browser.form.menuEdit.addAction(a)
 
